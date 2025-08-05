@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Korean online with comprehensive lessons, daily vocabulary, quizzes, and chatbot practice.">
+    <meta name="keywords" content="Korean, language learning, online course, Hangul, vocabulary, chatbot">
+    <title>KoreanLearn - Master Korean Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #ff6b6b;
+            --accent: #ffd166;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .urdu-lang {
+            font-family: 'Jameel Noori Nastaleeq', 'Nafees Web Naskh', 'Urdu Naskh Asiatype', serif;
+            direction: rtl;
+            text-align: right;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #2c3e50);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-switcher {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-switcher:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(74, 111, 165, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #6c91c0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Daily Vocabulary */
+        .daily-vocab {
+            background-color: var(--light);
+        }
+        
+        .vocab-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vocab-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .vocab-item {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--light-gray);
+        }
+        
+        .vocab-korean {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .vocab-romanization {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .vocab-english {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-btn:hover {
+            background: #3a5a80;
+            transform: scale(1.1);
+        }
+        
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .quiz-option {
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .quiz-option:hover {
+            background-color: #d1e0f0;
+        }
+        
+        .quiz-option.selected {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .quiz-feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: var(--success);
+            display: block;
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            display: block;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), #2c3e50);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .bot-message {
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        /* Payment Section */
+        .payment-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .payment-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option:hover, .payment-option.active {
+            border-color: var(--primary);
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+        
+        .payment-option i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .payment-form {
+            display: none;
+        }
+        
+        .payment-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-language"></i>
+                <span>KoreanLearn</span>
+            </div>
+            <button class="mobile-menu-btn" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#" class="active" data-en="Home" data-ur="ہوم">Home</a></li>
+                    <li><a href="#lessons" data-en="Lessons" data-ur="اسباق">Lessons</a></li>
+                    <li><a href="#vocabulary" data-en="Vocabulary" data-ur="لغت">Vocabulary</a></li>
+                    <li><a href="#quiz" data-en="Quiz" data-ur="امتحان">Quiz</a></li>
+                    <li><a href="#chatbot" data-en="Practice" data-ur="مشق">Practice</a></li>
+                    <li><a href="#pricing" data-en="Pricing" data-ur="قیمتیں">Pricing</a></li>
+                </ul>
+                <button class="language-switcher" id="languageSwitcher">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLanguage">EN</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 id="heroTitle">Master Korean with Confidence</h1>
+            <p id="heroSubtitle">Learn Korean from scratch with our comprehensive lessons, daily vocabulary, pronunciation practice, and interactive quizzes. Start your journey today!</p>
+            <a href="#lessons" class="btn" id="startBtn">Start Learning</a>
+            <a href="#pricing" class="btn btn-outline" id="plansBtn">View Plans</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="lessons">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="lessonsTitle">Beginner Korean Lessons</h2>
+                <p id="lessonsSubtitle">Our structured curriculum takes you from complete beginner to conversational Korean</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 id="feature1Title">Alphabet Mastery</h3>
+                    <p id="feature1Desc">Learn Hangul (Korean alphabet) with our interactive lessons designed for English speakers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 id="feature2Title">Basic Phrases</h3>
+                    <p id="feature2Desc">Start speaking Korean from day one with essential greetings and common expressions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 id="feature3Title">Grammar Fundamentals</h3>
+                    <p id="feature3Desc">Understand Korean sentence structure and grammar rules through clear explanations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 id="feature4Title">Pronunciation</h3>
+                    <p id="feature4Desc">Perfect your Korean pronunciation with audio examples from native speakers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Vocabulary Section -->
+    <section class="section daily-vocab" id="vocabulary">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="vocabTitle">Daily Vocabulary</h2>
+                <p id="vocabSubtitle">Learn new Korean words every day with pronunciation and usage examples</p>
+            </div>
+            <div class="vocab-card">
+                <h3 id="dailyWordTitle">Today's Korean Word</h3>
+                <div class="vocab-item">
+                    <div class="vocab-korean">안녕하세요</div>
+                    <div class="vocab-romanization">annyeong-haseyo</div>
+                    <div class="vocab-english" id="vocabMeaning">Hello / Hi</div>
+                    <button class="audio-btn" onclick="playAudio(this)">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <p id="vocabUsage">Use this greeting when meeting someone for the first time or in formal situations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="section" id="quiz">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="quizTitle">Korean Quiz</h2>
+                <p id="quizSubtitle">Test your knowledge with our interactive quizzes</p>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3 id="questionText">What does "감사합니다" mean in English?</h3>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)" id="option1">Goodbye</div>
+                    <div class="quiz-option" onclick="selectOption(this)" id="option2">Thank you</div>
+                    <div class="quiz-option" onclick="selectOption(this)" id="option3">Please</div>
+                    <div class="quiz-option" onclick="selectOption(this)" id="option4">Excuse me</div>
+                </div>
+                <div class="quiz-feedback" id="quizFeedback">
+                    Correct! "감사합니다" means "Thank you" in Korean.
+                </div>
+                <button class="btn" onclick="checkAnswer()" id="checkBtn">Check Answer</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="section" id="chatbot">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="chatTitle">Korean Conversation Practice</h2>
+                <p id="chatSubtitle">Practice speaking Korean with our AI chatbot</p>
+            </div>
+            <div class="chatbot-container">
+                <div class="chat-header">
+                    <h3 id="chatHeader">Korean Practice Chatbot</h3>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        안녕하세요! 저는 한국어 연습 봇입니다. 무엇을 도와드릴까요?
+                        (Hello! I'm a Korean practice bot. How can I help you?)
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Type your message in Korean or English...">
+                    <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="paymentTitle">Choose Your Plan</h2>
+                <p id="paymentSubtitle">Unlock premium features with our affordable subscription plans</p>
+            </div>
+            <div class="payment-container">
+                <div class="payment-options">
+                    <div class="payment-option active" onclick="selectPaymentMethod('jazzcash')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3 id="jazzcashTitle">JazzCash</h3>
+                        <p id="jazzcashDesc">Mobile Payment</p>
+                    </div>
+                    <div class="payment-option" onclick="selectPaymentMethod('bank')">
+                        <i class="fas fa-university"></i>
+                        <h3 id="bankTitle">Bank Transfer</h3>
+                        <p id="bankDesc">Direct Transfer</p>
+                    </div>
+                </div>
+                
+                <div class="payment-form active" id="jazzcashForm">
+                    <h3 id="jazzcashFormTitle">JazzCash Payment</h3>
+                    <div class="form-group">
+                        <label for="jazzcashNumber" id="jazzcashLabel">JazzCash Number</label>
+                        <input type="text" id="jazzcashNumber" placeholder="Enter your JazzCash number">
+                    </div>
+                    <div class="form-group">
+                        <label for="jazzcashAmount" id="amountLabel">Amount (PKR)</label>
+                        <input type="text" id="jazzcashAmount" value="1,500" readonly>
+                    </div>
+                    <button class="btn" onclick="processPayment('jazzcash')" id="payJazzcashBtn">Pay with JazzCash</button>
+                </div>
+                
+                <div class="payment-form" id="bankForm">
+                    <h3 id="bankFormTitle">Bank Transfer</h3>
+                    <div class="form-group">
+                        <label for="accountName" id="accountNameLabel">Account Name</label>
+                        <input type="text" id="accountName" value="KoreanLearn Education" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber" id="accountNumberLabel">Account Number</label>
+                        <input type="text" id="accountNumber" value="1234567890" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="bankName" id="bankNameLabel">Bank Name</label>
+                        <input type="text" id="bankName" value="National Bank of Pakistan" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferAmount" id="transferAmountLabel">Amount (PKR)</label>
+                        <input type="text" id="transferAmount" value="1,500" readonly>
+                    </div>
+                    <button class="btn" onclick="processPayment('bank')" id="transferBtn">I've Made the Transfer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 id="footerTitle1">KoreanLearn</h3>
+                    <p id="footerDesc1">Your trusted platform for learning Korean online. From beginner to fluent speaker.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 id="footerTitle2">Quick Links</h3>
+                    <ul>
+                        <li><a href="#" data-en="Home" data-ur="ہوم">Home</a></li>
+                        <li><a href="#lessons" data-en="Lessons" data-ur="اسباق">Lessons</a></li>
+                        <li><a href="#vocabulary" data-en="Vocabulary" data-ur="لغت">Vocabulary</a></li>
+                        <li><a href="#quiz" data-en="Quiz" data-ur="امتحان">Quiz</a></li>
+                        <li><a href="#chatbot" data-en="Practice" data-ur="مشق">Practice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 id="footerTitle3">Resources</h3>
+                    <ul>
+                        <li><a href="#" data-en="Blog" data-ur="بلاگ">Blog</a></li>
+                        <li><a href="#" data-en="Korean Culture" data-ur="کورین ثقافت">Korean Culture</a></li>
+                        <li><a href="#" data-en="Grammar Guide" data-ur="گرامر گائیڈ">Grammar Guide</a></li>
+                        <li><a href="#" data-en="Pronunciation Tips" data-ur="تلفظ کی ٹپس">Pronunciation Tips</a></li>
+                        <li><a href="#" data-en="K-Pop Learning" data-ur="کے پاپ سیکھنا">K-Pop Learning</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 id="footerTitle4">Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> hello@koreanlearn.com</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Seoul, South Korea</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p id="copyrightText">&copy; 2023 KoreanLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching
+        let currentLanguage = 'en';
+        
+        document.getElementById('languageSwitcher').addEventListener('click', function() {
+            if (currentLanguage === 'en') {
+                switchToUrdu();
+            } else {
+                switchToEnglish();
+            }
+        });
+        
+        function switchToUrdu() {
+            currentLanguage = 'ur';
+            document.body.classList.add('urdu-lang');
+            document.getElementById('currentLanguage').textContent = 'UR';
+            
+            // Update all translatable elements
+            document.getElementById('heroTitle').textContent = 'اعتماد کے ساتھ کورین زبان کو مکمل کریں';
+            document.getElementById('heroSubtitle').textContent = 'ہمارے جامع اسباق، روزانہ لغت، تلفظ کی مشق اور تعاملی امتحانات کے ساتھ کورین زبان کو صفر سے سیکھیں۔ آج ہی اپنی سفر شروع کریں!';
+            document.getElementById('startBtn').textContent = 'سیکھنا شروع کریں';
+            document.getElementById('plansBtn').textContent = 'منصوبے دیکھیں';
+            
+            document.getElementById('lessonsTitle').textContent = 'مبتدی کورین اسباق';
+            document.getElementById('lessonsSubtitle').textContent = 'ہمارا منظم منصوبہ تعلیم آپ کو مکمل مبتدی سے لے کر گفتگو کے قابل کورین تک لے جاتا ہے';
+            
+            document.getElementById('feature1Title').textContent = 'حروف تہجی کی مہارت';
+            document.getElementById('feature1Desc').textContent = 'انگریزی زبان بولنے والوں کے لیے ڈیزائن کردہ ہمارے تعاملی اسباق کے ساتھ ہنگول (کورین حروف تہجی) سیکھیں۔';
+            
+            document.getElementById('feature2Title').textContent = 'بنیادی جملے';
+            document.getElementById('feature2Desc').textContent = 'دن کے پہلے ہی دن کورین بولنا شروع کریں اہم تعارفوں اور عام اظہارات کے ساتھ۔';
+            
+            document.getElementById('feature3Title').textContent = 'گرامر کی بنیادی باتیں';
+            document.getElementById('feature3Desc').textContent = 'واضح وضاحت کے ذریعے کورین جملوں کی تعمیر اور گرامر کے قواعد کو سمجھیں۔';
+            
+            document.getElementById('feature4Title').textContent = 'تلفظ';
+            document.getElementById('feature4Desc').textContent = 'اصل کورین بولنے والوں کی آڈیو مثالوں کے ساتھ اپنے کورین تلفظ کو مکمل کریں۔';
+            
+            document.getElementById('vocabTitle').textContent = 'روزانہ لغت';
+            document.getElementById('vocabSubtitle').textContent = 'ہر روز نئے کورین الفاظ کو تلفظ اور استعمال کی مثالوں کے ساتھ سیکھیں';
+            document.getElementById('dailyWordTitle').textContent = 'آج کا کورین لفظ';
+            document.getElementById('vocabMeaning').textContent = 'ہیلو / ہائی';
+            document.getElementById('vocabUsage').textContent = 'کسی شخص سے پہلی بار ملنے یا سرکاری حالات میں یہ تعارف استعمال کریں۔';
+            
+            document.getElementById('quizTitle').textContent = 'کورین امتحان';
+            document.getElementById('quizSubtitle').textContent = 'ہمارے تعاملی امتحانات کے ساتھ اپنے علم کی جانچ کریں';
+            document.getElementById('questionText').textContent = '"گمساہمیدا" کا انگریزی میں کیا مطلب ہے؟';
+            document.getElementById('option1').textContent = 'خدا حافظ';
+            document.getElementById('option2').textContent = 'شکریہ';
+            document.getElementById('option3').textContent = 'مہربانی';
+            document.getElementById('option4').textContent = 'معاف کیجیے گا';
+            document.getElementById('checkBtn').textContent = 'جواب چیک کریں';
+            document.getElementById('quizFeedback').textContent = 'صحیح! "گمساہمیدا" کا مطلب کورین میں "شکریہ" ہے۔';
+            
+            document.getElementById('chatTitle').textContent = 'کورین گفتگو کی مشق';
+            document.getElementById('chatSubtitle').textContent = 'ہمارے AI چیٹ بوٹ کے ساتھ کورین بولنے کی مشق کریں';
+            document.getElementById('chatHeader').textContent = 'کورین مشق چیٹ بوٹ';
+            document.getElementById('userInput').placeholder = 'اپنا پیغام کورین یا انگریزی میں ٹائپ کریں...';
+            
+            document.getElementById('paymentTitle').textContent = 'اپنا منصوبہ منتخب کریں';
+            document.getElementById('paymentSubtitle').textContent = 'ہمارے معقول رقوم کے ساتھ پریمیم خصوصیات کو غیر مقفل کریں';
+            document.getElementById('jazzcashTitle').textContent = 'جاز کیش';
+            document.getElementById('jazzcashDesc').textContent = 'موبائل ادائیگی';
+            document.getElementById('bankTitle').textContent = 'بینک ٹرانسفر';
+            document.getElementById('bankDesc').textContent = 'براہ راست ٹرانسفر';
+            document.getElementById('jazzcashFormTitle').textContent = 'جاز کیش ادائیگی';
+            document.getElementById('jazzcashLabel').textContent = 'جاز کیش نمبر';
+            document.getElementById('amountLabel').textContent = 'رقم (PKR)';
+            document.getElementById('payJazzcashBtn').textContent = 'جاز کیش کے ساتھ ادائیگی کریں';
+            document.getElementById('bankFormTitle').textContent = 'بینک ٹرانسفر';
+            document.getElementById('accountNameLabel').textContent = 'اکاؤنٹ کا نام';
+            document.getElementById('accountNumberLabel').textContent = 'اکاؤنٹ نمبر';
+            document.getElementById('bankNameLabel').textContent = 'بینک کا نام';
+            document.getElementById('transferAmountLabel').textContent = 'رقم (PKR)';
+            document.getElementById('transferBtn').textContent = 'میں نے ٹرانسفر کر دیا ہے';
+            
+            document.getElementById('footerTitle1').textContent = 'کورین لرن';
+            document.getElementById('footerDesc1').textContent = 'کورین آن لائن سیکھنے کے لیے آپ کا قابل اعتماد پلیٹ فارم۔ مبتدی سے لے کر مہارت رکھنے والے تک۔';
+            document.getElementById('footerTitle2').textContent = 'فوری روابط';
+            document.getElementById('footerTitle3').textContent = 'وسائل';
+            document.getElementById('footerTitle4').textContent = 'ہم سے رابطہ کریں';
+            document.getElementById('copyrightText').textContent = '© 2023 کورین لرن۔ جملہ حقوق محفوظ ہیں۔';
+            
+            // Update navigation links
+            updateNavLinks();
+        }
+        
+        function switchToEnglish() {
+            currentLanguage = 'en';
+            document.body.classList.remove('urdu-lang');
+            document.getElementById('currentLanguage').textContent = 'EN';
+            
+            // Update all translatable elements
+            document.getElementById('heroTitle').textContent = 'Master Korean with Confidence';
+            document.getElementById('heroSubtitle').textContent = 'Learn Korean from scratch with our comprehensive lessons, daily vocabulary, pronunciation practice, and interactive quizzes. Start your journey today!';
+            document.getElementById('startBtn').textContent = 'Start Learning';
+            document.getElementById('plansBtn').textContent = 'View Plans';
+            
+            document.getElementById('lessonsTitle').textContent = 'Beginner Korean Lessons';
+            document.getElementById('lessonsSubtitle').textContent = 'Our structured curriculum takes you from complete beginner to conversational Korean';
+            
+            document.getElementById('feature1Title').textContent = 'Alphabet Mastery';
+            document.getElementById('feature1Desc').textContent = 'Learn Hangul (Korean alphabet) with our interactive lessons designed for English speakers.';
+            
+            document.getElementById('feature2Title').textContent = 'Basic Phrases';
+            document.getElementById('feature2Desc').textContent = 'Start speaking Korean from day one with essential greetings and common expressions.';
+            
+            document.getElementById('feature3Title').textContent = 'Grammar Fundamentals';
+            document.getElementById('feature3Desc').textContent = 'Understand Korean sentence structure and grammar rules through clear explanations.';
+            
+            document.getElementById('feature4Title').textContent = 'Pronunciation';
+            document.getElementById('feature4Desc').textContent = 'Perfect your Korean pronunciation with audio examples from native speakers.';
+            
+            document.getElementById('vocabTitle').textContent = 'Daily Vocabulary';
+            document.getElementById('vocabSubtitle').textContent = 'Learn new Korean words every day with pronunciation and usage examples';
+            document.getElementById('dailyWordTitle').textContent = "Today's Korean Word";
+            document.getElementById('vocabMeaning').textContent = 'Hello / Hi';
+            document.getElementById('vocabUsage').textContent = 'Use this greeting when meeting someone for the first time or in formal situations.';
+            
+            document.getElementById('quizTitle').textContent = 'Korean Quiz';
+            document.getElementById('quizSubtitle').textContent = 'Test your knowledge with our interactive quizzes';
+            document.getElementById('questionText').textContent = 'What does "감사합니다" mean in English?';
+            document.getElementById('option1').textContent = 'Goodbye';
+            document.getElementById('option2').textContent = 'Thank you';
+            document.getElementById('option3').textContent = 'Please';
+            document.getElementById('option4').textContent = 'Excuse me';
+            document.getElementById('checkBtn').textContent = 'Check Answer';
+            document.getElementById('quizFeedback').textContent = 'Correct! "감사합니다" means "Thank you" in Korean.';
+            
+            document.getElementById('chatTitle').textContent = 'Korean Conversation Practice';
+            document.getElementById('chatSubtitle').textContent = 'Practice speaking Korean with our AI chatbot';
+            document.getElementById('chatHeader').textContent = 'Korean Practice Chatbot';
+            document.getElementById('userInput').placeholder = 'Type your message in Korean or English...';
+            
+            document.getElementById('paymentTitle').textContent = 'Choose Your Plan';
+            document.getElementById('paymentSubtitle').textContent = 'Unlock premium features with our affordable subscription plans';
+            document.getElementById('jazzcashTitle').textContent = 'JazzCash';
+            document.getElementById('jazzcashDesc').textContent = 'Mobile Payment';
+            document.getElementById('bankTitle').textContent = 'Bank Transfer';
+            document.getElementById('bankDesc').textContent = 'Direct Transfer';
+            document.getElementById('jazzcashFormTitle').textContent = 'JazzCash Payment';
+            document.getElementById('jazzcashLabel').textContent = 'JazzCash Number';
+            document.getElementById('amountLabel').textContent = 'Amount (PKR)';
+            document.getElementById('payJazzcashBtn').textContent = 'Pay with JazzCash';
+            document.getElementById('bankFormTitle').textContent = 'Bank Transfer';
+            document.getElementById('accountNameLabel').textContent = 'Account Name';
+            document.getElementById('accountNumberLabel').textContent = 'Account Number';
+            document.getElementById('bankNameLabel').textContent = 'Bank Name';
+            document.getElementById('transferAmountLabel').textContent = 'Amount (PKR)';
+            document.getElementById('transferBtn').textContent = "I've Made the Transfer";
+            
+            document.getElementById('footerTitle1').textContent = 'KoreanLearn';
+            document.getElementById('footerDesc1').textContent = 'Your trusted platform for learning Korean online. From beginner to fluent speaker.';
+            document.getElementById('footerTitle2').textContent = 'Quick Links';
+            document.getElementById('footerTitle3').textContent = 'Resources';
+            document.getElementById('footerTitle4').textContent = 'Contact Us';
+            document.getElementById('copyrightText').textContent = '&copy; 2023 KoreanLearn. All rights reserved.';
+            
+            // Update navigation links
+            updateNavLinks();
+        }
+        
+        function updateNavLinks() {
+            const navLinks = document.querySelectorAll('nav a[data-en]');
+            navLinks.forEach(link => {
+                if (currentLanguage === 'ur') {
+                    link.textContent = link.getAttribute('data-ur');
+                } else {
+                    link.textContent = link.getAttribute('data-en');
+                }
+            });
+            
+            const footerLinks = document.querySelectorAll('footer a[data-en]');
+            footerLinks.forEach(link => {
+                if (currentLanguage === 'ur') {
+                    link.textContent = link.getAttribute('data-ur');
+                } else {
+                    link.textContent = link.getAttribute('data-en');
+                }
+            });
+        }
+        
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Quiz Functionality
+        let selectedOption = null;
+
+        function selectOption(element) {
+            // Remove selected class from all options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            selectedOption = element;
+        }
+
+        function checkAnswer() {
+            const feedback = document.getElementById('quizFeedback');
+            
+            if (!selectedOption) {
+                feedback.textContent = currentLanguage === 'ur' ? 
+                    "براہ کرم ایک جواب منتخب کریں!" : 
+                    "Please select an answer!";
+                feedback.className = "quiz-feedback incorrect";
+                feedback.style.display = "block";
+                return;
+            }
+            
+            if ((currentLanguage === 'en' && selectedOption.textContent === "Thank you") ||
+                (currentLanguage === 'ur' && selectedOption.textContent === "شکریہ")) {
+                feedback.textContent = currentLanguage === 'ur' ? 
+                    'صحیح! "گمساہمیدا" کا مطلب کورین میں "شکریہ" ہے۔' : 
+                    'Correct! "감사합니다" means "Thank you" in Korean.';
+                feedback.className = "quiz-feedback correct";
+            } else {
+                feedback.textContent = currentLanguage === 'ur' ? 
+                    'غلط۔ صحیح جواب "شکریہ" ہے۔' : 
+                    'Incorrect. The correct answer is "Thank you".';
+                feedback.className = "quiz-feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+
+        // Audio Playback
+        function playAudio(button) {
+            // In a real app, this would play actual audio
+            button.innerHTML = '<i class="fas fa-volume-up"></i>';
+            button.style.background = '#28a745';
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-volume-up"></i>';
+                button.style.background = '';
+            }, 1000);
+        }
+
+        // Chatbot Functionality
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Simulate bot response after a delay
+            setTimeout(() => {
+                let response = currentLanguage === 'ur' ? 
+                    "میں ابھی سیکھ رہا ہوں! 'آپ کیسے ہیں؟' یا 'آپ کا نام کیا ہے؟' کورین میں پوچھنے کی کوشش کریں۔" : 
+                    "I'm still learning! Try asking 'How are you?' or 'What is your name?' in Korean.";
+                
+                if (message.toLowerCase().includes('hello') || message.includes('안녕')) {
+                    response = currentLanguage === 'ur' ? 
+                        "안녕하세요! (ہیلو!) آج آپ کورین مشق کے لیے کیسے مدد کر سکتا ہوں؟" : 
+                        "안녕하세요! (Hello!) How can I help you practice Korean today?";
+                } else if (message.toLowerCase().includes('thank')) {
+                    response = currentLanguage === 'ur' ? 
+                        "감사합니다! (شکریہ!) آپ کا خیر مقدم ہے!" : 
+                        "감사합니다! (Thank you!) You're welcome!";
+                } else if (message.toLowerCase().includes('how are you')) {
+                    response = currentLanguage === 'ur' ? 
+                        "저는 잘 지내요, 고마워요! (میں اچھا ہوں، شکریہ!) آپ کیسے ہیں؟" : 
+                        "저는 잘 지내요, 고마워요! (I'm doing well, thank you!) How about you?";
+                } else if (message.toLowerCase().includes('name')) {
+                    response = currentLanguage === 'ur' ? 
+                        "제 이름은 챗봇입니다. (میرا نام چیٹ بوٹ ہے۔) آپ کا نام کیا ہے؟" : 
+                        "제 이름은 챗봇입니다. (My name is Chatbot.) What's your name?";
+                } else if (message.toLowerCase().includes('goodbye') || message.includes('안녕히')) {
+                    response = currentLanguage === 'ur' ? 
+                        "안녕히 가세요! (خدا حافظ!) اگلی بار ملیں گے!" : 
+                        "안녕히 가세요! (Goodbye!) See you next time!";
+                }
+                
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender + '-message');
+            messageDiv.textContent = text;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Payment Selection
+        function selectPaymentMethod(method) {
+            // Update active state for payment options
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Show the selected payment form
+            document.getElementById('jazzcashForm').classList.remove('active');
+            document.getElementById('bankForm').classList.remove('active');
+            document.getElementById(method + 'Form').classList.add('active');
+        }
+
+        function processPayment(method) {
+            const numberInput = document.getElementById(method + 'Number');
+            const number = numberInput ? numberInput.value : '';
+            
+            if (method === 'jazzcash' && !number) {
+                alert(currentLanguage === 'ur' ? 
+                    'براہ کرم اپنا جاز کیش نمبر درج کریں' : 
+                    'Please enter your JazzCash number');
+                return;
+            }
+            
+            alert(currentLanguage === 'ur' ? 
+                `ادائیگی ${method} کے ذریعے ہو رہی ہے... ایک حقیقی درخواست میں، یہ ادائیگی کے گیٹ وے سے جڑے گا۔` : 
+                `Payment processing via ${method}... In a real application, this would connect to the payment gateway.`);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+        
+        // Initialize chat with welcome message
+        document.addEventListener('DOMContentLoaded', function() {
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+    </script>
+</body>
+</html>
