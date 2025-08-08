@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoreanLearn - Master Korean Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #ff6b6b;
+            --accent: #ffd166;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #2c3e50);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(74, 111, 165, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #6c91c0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Daily Vocabulary */
+        .daily-vocab {
+            background-color: var(--light);
+        }
+        
+        .vocab-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vocab-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .vocab-item {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--light-gray);
+        }
+        
+        .vocab-korean {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .vocab-romanization {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .vocab-english {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-btn:hover {
+            background: #3a5a80;
+            transform: scale(1.1);
+        }
+        
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .quiz-option {
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .quiz-option:hover {
+            background-color: #d1e0f0;
+        }
+        
+        .quiz-option.selected {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .quiz-feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: var(--success);
+            display: block;
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            display: block;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), #2c3e50);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .bot-message {
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        /* Payment Section */
+        .payment-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .payment-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option:hover, .payment-option.active {
+            border-color: var(--primary);
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+        
+        .payment-option i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .payment-form {
+            display: none;
+        }
+        
+        .payment-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-language"></i>
+                <span>KoreanLearn</span>
+            </div>
+            <button class="mobile-menu-btn" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#lessons">Lessons</a></li>
+                    <li><a href="#vocabulary">Vocabulary</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="#chatbot">Practice</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master Korean with Confidence</h1>
+            <p>Learn Korean from scratch with our comprehensive lessons, daily vocabulary, pronunciation practice, and interactive quizzes. Start your journey today!</p>
+            <a href="#lessons" class="btn">Start Learning</a>
+            <a href="#pricing" class="btn btn-outline">View Plans</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="lessons">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beginner Korean Lessons</h2>
+                <p>Our structured curriculum takes you from complete beginner to conversational Korean</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Alphabet Mastery</h3>
+                    <p>Learn Hangul (Korean alphabet) with our interactive lessons designed for English speakers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Basic Phrases</h3>
+                    <p>Start speaking Korean from day one with essential greetings and common expressions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Grammar Fundamentals</h3>
+                    <p>Understand Korean sentence structure and grammar rules through clear explanations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Pronunciation</h3>
+                    <p>Perfect your Korean pronunciation with audio examples from native speakers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Vocabulary Section -->
+    <section class="section daily-vocab" id="vocabulary">
+        <div class="container">
+            <div class="section-title">
+                <h2>Daily Vocabulary</h2>
+                <p>Learn new Korean words every day with pronunciation and usage examples</p>
+            </div>
+            <div class="vocab-card">
+                <h3>Today's Korean Word</h3>
+                <div class="vocab-item">
+                    <div class="vocab-korean">안녕하세요</div>
+                    <div class="vocab-romanization">annyeong-haseyo</div>
+                    <div class="vocab-english">Hello / Hi</div>
+                    <button class="audio-btn" onclick="playAudio()">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <p>Use this greeting when meeting someone for the first time or in formal situations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="section" id="quiz">
+        <div class="container">
+            <div class="section-title">
+                <h2>Korean Quiz</h2>
+                <p>Test your knowledge with our interactive quizzes</p>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>What does "감사합니다" mean in English?</h3>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">Goodbye</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Thank you</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Please</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Excuse me</div>
+                </div>
+                <div class="quiz-feedback" id="quizFeedback">
+                    Correct! "감사합니다" means "Thank you" in Korean.
+                </div>
+                <button class="btn" onclick="checkAnswer()">Check Answer</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="section" id="chatbot">
+        <div class="container">
+            <div class="section-title">
+                <h2>Korean Conversation Practice</h2>
+                <p>Practice speaking Korean with our AI chatbot</p>
+            </div>
+            <div class="chatbot-container">
+                <div class="chat-header">
+                    <h3>Korean Practice Chatbot</h3>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        안녕하세요! 저는 한국어 연습 봇입니다. 무엇을 도와드릴까요?
+                        (Hello! I'm a Korean practice bot. How can I help you?)
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Type your message in Korean or English...">
+                    <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Plan</h2>
+                <p>Unlock premium features with our affordable subscription plans</p>
+            </div>
+            <div class="payment-container">
+                <div class="payment-options">
+                    <div class="payment-option active" onclick="selectPaymentMethod('jazzcash')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>JazzCash</h3>
+                        <p>Mobile Payment</p>
+                    </div>
+                    <div class="payment-option" onclick="selectPaymentMethod('bank')">
+                        <i class="fas fa-university"></i>
+                        <h3>Bank Transfer</h3>
+                        <p>Direct Transfer</p>
+                    </div>
+                </div>
+                
+                <div class="payment-form active" id="jazzcashForm">
+                    <h3>JazzCash Payment</h3>
+                    <div class="form-group">
+                        <label for="jazzcashNumber">JazzCash Number</label>
+                        <input type="text" id="jazzcashNumber" placeholder="Enter your JazzCash number">
+                    </div>
+                    <div class="form-group">
+                        <label for="jazzcashAmount">Amount (PKR)</label>
+                        <input type="text" id="jazzcashAmount" value="1,500" readonly>
+                    </div>
+                    <button class="btn" onclick="processPayment('jazzcash')">Pay with JazzCash</button>
+                </div>
+                
+                <div class="payment-form" id="bankForm">
+                    <h3>Bank Transfer</h3>
+                    <div class="form-group">
+                        <label for="accountName">Account Name</label>
+                        <input type="text" id="accountName" value="KoreanLearn Education" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number</label>
+                        <input type="text" id="accountNumber" value="1234567890" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="bankName">Bank Name</label>
+                        <input type="text" id="bankName" value="National Bank of Pakistan" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferAmount">Amount (PKR)</label>
+                        <input type="text" id="transferAmount" value="1,500" readonly>
+                    </div>
+                    <button class="btn" onclick="processPayment('bank')">I've Made the Transfer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KoreanLearn</h3>
+                    <p>Your trusted platform for learning Korean online. From beginner to fluent speaker.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#lessons">Lessons</a></li>
+                        <li><a href="#vocabulary">Vocabulary</a></li>
+                        <li><a href="#quiz">Quiz</a></li>
+                        <li><a href="#chatbot">Practice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Korean Culture</a></li>
+                        <li><a href="#">Grammar Guide</a></li>
+                        <li><a href="#">Pronunciation Tips</a></li>
+                        <li><a href="#">K-Pop Learning</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> hello@koreanlearn.com</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Seoul, South Korea</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 KoreanLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Quiz Functionality
+        let selectedOption = null;
+
+        function selectOption(element) {
+            // Remove selected class from all options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            selectedOption = element;
+        }
+
+        function checkAnswer() {
+            const feedback = document.getElementById('quizFeedback');
+            
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer!";
+                feedback.className = "quiz-feedback incorrect";
+                feedback.style.display = "block";
+                return;
+            }
+            
+            if (selectedOption.textContent === "Thank you") {
+                feedback.textContent = "Correct! 감사합니다 (gamsahamnida) means Thank you in Korean.";
+                feedback.className = "quiz-feedback correct";
+            } else {
+                feedback.textContent = "Incorrect. The correct answer is 'Thank you'.";
+                feedback.className = "quiz-feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+
+        // Audio Playback
+        function playAudio() {
+            // In a real app, this would play actual audio
+            const button = event.currentTarget;
+            button.innerHTML = '<i class="fas fa-volume-up"></i>';
+            button.style.background = '#28a745';
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-volume-up"></i>';
+                button.style.background = '';
+            }, 1000);
+        }
+
+        // Chatbot Functionality
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Simulate bot response after a delay
+            setTimeout(() => {
+                let response = "I'm still learning! Try asking 'How are you?' or 'What is your name?' in Korean.";
+                
+                if (message.toLowerCase().includes('hello') || message.includes('안녕')) {
+                    response = "안녕하세요! (Hello!) How can I help you practice Korean today?";
+                } else if (message.toLowerCase().includes('thank')) {
+                    response = "감사합니다! (Thank you!) You're welcome!";
+                } else if (message.toLowerCase().includes('how are you')) {
+                    response = "저는 잘 지내요, 고마워요! (I'm doing well, thank you!) How about you?";
+                }
+                
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender + '-message');
+            messageDiv.textContent = text;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Payment Selection
+        function selectPaymentMethod(method) {
+            // Update active state for payment options
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Show the selected payment form
+            document.getElementById('jazzcashForm').classList.remove('active');
+            document.getElementById('bankForm').classList.remove('active');
+            document.getElementById(method + 'Form').classList.add('active');
+        }
+
+        function processPayment(method) {
+            alert(`Payment processing via ${method}... In a real application, this would connect to the payment gateway.`);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
